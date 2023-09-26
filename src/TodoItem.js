@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function TodoItem({ todo, setTodos }) {
+function TodoItem({ todo, setTodos, taskNumber }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(todo.title);
 
@@ -30,7 +30,8 @@ function TodoItem({ todo, setTodos }) {
   };
 
   return (
-    <li>
+    <li className="todo-item">
+      <div className="task-number">{taskNumber}.</div>
       {isEditing ? (
         <>
           <input
@@ -42,14 +43,14 @@ function TodoItem({ todo, setTodos }) {
         </>
       ) : (
         <>
-          <span
+          <div
             style={{
               textDecoration: todo.completed ? 'line-through' : 'none',
               color: todo.completed ? '#888' : 'inherit',
             }}
           >
             {todo.title}
-          </span>
+          </div>
           <input
             type="checkbox"
             checked={todo.completed}
