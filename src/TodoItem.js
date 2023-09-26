@@ -51,13 +51,15 @@ function TodoItem({ todo, setTodos, taskNumber }) {
           >
             {todo.title}
           </div>
-          <input
-            type="checkbox"
-            checked={todo.completed}
-            onChange={handleCompleteToggle}
-          />
-          <button onClick={handleEditClick}>Edit</button>
-          <button onClick={handleDeleteClick}>Delete</button>
+          <div className="button-group">
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={handleCompleteToggle}
+            />
+            <button className="edit-button" onClick={handleEditClick}>Edit</button>
+            <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
+          </div>
         </>
       )}
     </li>
