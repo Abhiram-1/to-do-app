@@ -8,8 +8,8 @@ function TodoList({ todos, filterCompleted, setTodos }) {
 
   return (
     <ul>
-      {filteredTodos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} setTodos={setTodos} />
+      {filteredTodos.map((todo, index) => (
+        <TodoItem key={todo.id} todo={todo} setTodos={setTodos} taskNumber={index + 1} />
       ))}
     </ul>
   );
