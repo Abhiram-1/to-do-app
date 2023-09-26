@@ -9,26 +9,28 @@ function App() {
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users/1/todos')
-    .then((response) => response.json())
-    .then((data) => setTodos(data));
+      .then((response) => response.json())
+      .then((data) => {
+        setTodos(data); // Use the API response directly without adding an "id" property.
+      });
   }, []);
 
   return (
     <div className="App">
-    <h1>What's the Plan for Today?</h1>
-    <TodoForm todos={todos} setTodos={setTodos} />
-    <div>
-      <label>
-        Show Completed:
-        <input
-        type="checkbox"
-        checked={filterCompleted}
-         onChange={() => setFilterCompleted(!filterCompleted)}
+      <h1>What's the Plan for Today?</h1>
+      <TodoForm todos={todos} setTodos={setTodos} />
+      <div>
+        <label>
+          Show Completed:
+          <input
+            type="checkbox"
+            checked={filterCompleted}
+            onChange={() => setFilterCompleted(!filterCompleted)}
           />
-      </label>
+        </label>
+      </div>
+      <TodoList todos={todos} filterCompleted={filterCompleted} setTodos={setTodos} />
     </div>
-  <TodoList todos={todos} filterCompleted={filterCompleted} setTodos={setTodos} />
-  </div>
   );
 }
 
